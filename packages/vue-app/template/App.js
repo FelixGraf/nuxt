@@ -131,6 +131,12 @@ export default {
     <% } %>
   },
   <% } %>
+  <% if (features.clientOnline) { %>
+    beforeDestroy () {
+      window.removeEventListener('online', this.refreshOnlineStatus)
+      window.removeEventListener('offline', this.refreshOnlineStatus)
+    }
+  <% } %>
   watch: {
     'nuxt.err': 'errorChanged'
   },
